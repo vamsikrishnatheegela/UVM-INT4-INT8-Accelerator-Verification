@@ -2,7 +2,7 @@
 
 A verification-focused RTL project for a small mixed-precision multiply-accumulate (MAC) accelerator. The first milestone is a single MAC lane; the next milestone will expand it into a 2x2 systolic array and a reusable SystemVerilog/UVM environment.
 
-**Current status:** initial specification, synthesizable MAC RTL, interface, and lint helper committed. UVM agents, scoreboard, assertions, functional coverage, constrained-random tests, and simulator-backed results are not implemented yet. This repository is not yet fully verified.
+**Current status:** synthesizable MAC RTL, lint helper, directed smoke test, randomized reference-model regression, lightweight coverage counters, and an initial UVM source environment are committed. The Verilator smoke and randomized regressions have passed locally. The UVM classes have not yet been compiled or simulated on a UVM-capable simulator; the repository is not yet fully verified.
 
 ## Goals
 - Verify signed INT8 and signed INT4 MAC behavior.
@@ -46,6 +46,9 @@ There is no backpressure in this first version: one operation can be accepted pe
 1. Read docs/architecture.md.
 2. Read docs/verification_plan.md and docs/testplan.csv.
 3. Run scripts/run_lint.sh to lint the RTL if Verilator is installed.
+4. Run scripts/run_smoke.sh for directed checks.
+5. Run scripts/run_random.sh for randomized reference-model checks and required coverage counters.
+6. Review docs/uvm_run.md before compiling the UVM environment on a UVM-capable simulator.
 
 A complete UVM run requires a simulator with compatible UVM support, such as Cadence Xcelium, Siemens Questa, or Synopsys VCS. Verilator availability alone does not guarantee support for the full UVM class library.
 
