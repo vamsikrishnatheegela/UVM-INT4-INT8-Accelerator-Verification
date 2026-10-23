@@ -1,0 +1,17 @@
+ID,Feature,Scenario,Mode,Stimulus,Expected result,Priority,Status
+T001,Reset,Reset asserted for multiple rising edges,Both,rst_n=0,accumulator=0 and out_valid=0,P0,Planned
+T002,Arithmetic,Zero product,INT4,a=0 b=0 valid=1,accumulator remains zero,P0,Planned
+T003,Arithmetic,INT4 minimum times minimum,INT4,a=-8 b=-8,product=64,P0,Planned
+T004,Arithmetic,INT4 minimum times maximum,INT4,a=-8 b=7,product=-56,P0,Planned
+T005,Arithmetic,INT4 maximum times maximum,INT4,a=7 b=7,product=49,P0,Planned
+T006,Arithmetic,INT8 minimum times minimum,INT8,a=-128 b=-128,product=16384,P0,Planned
+T007,Arithmetic,INT8 minimum times maximum,INT8,a=-128 b=127,product=-16256,P0,Planned
+T008,Arithmetic,INT8 maximum times maximum,INT8,a=127 b=127,product=16129,P0,Planned
+T009,Accumulation,Accumulate three products,Both,Three valid operations without clear,Accumulator equals signed product sum,P0,Planned
+T010,Control,Clear while idle,Both,clear=1 valid=0,Accumulator becomes zero,P0,Planned
+T011,Control,Clear and valid together,Both,clear=1 valid=1,Accumulator becomes current product only,P0,Planned
+T012,Control,Idle hold,Both,valid=0 clear=0,Accumulator holds previous value,P0,Planned
+T013,Precision,Ignore upper nibble in INT4,INT4,Change upper bits while low nibbles fixed,Product unchanged,P1,Planned
+T014,Precision,Mode transition,Both,Back-to-back valid operations with mode change,Each product uses mode sampled on its edge,P1,Planned
+T015,Reset,Reset during active sequence,Both,Assert reset between operations,Accumulator and valid clear,P1,Planned
+T016,Random,Constrained-random sequence,Both,Random operands/mode/valid/clear,Scoreboard has zero mismatches,P1,Planned
